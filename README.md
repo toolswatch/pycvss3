@@ -8,13 +8,13 @@ pycvss3 is Python library calculator for the newest CVSS v3 and can be invoked f
 How to ?
 ==============
 
-Run `cvss_3.calc.py` it's self-explanatory. The only input is the CVSS v3 vectors.
+Run `cvss_3.calc.py` it's self-explanatory. The only input is the CVSS v3 vector.
 
 Or edit the `api_call.py` to see how to leverage the class from your scripts.
 
 v0.1
 ---------
-* Initial release with the ability to calculatec the Base and Temporal scores in compliance with the CVSS v3.0 specifications  (https://www.first.org/cvss/specification-document)
+* Initial release with the ability to calculate the Base and Temporal scores in compliance with the CVSS v3.0 specifications  (https://www.first.org/cvss/specification-document)
 The environmental score will be added later despite the fact the formula is in the code and working great. 
 * Added api_call.py to demonstrate how to invoke the class.
 * Added the cvss_3.calc.py command line that accepts the CVSS v3.0 vector as input.
