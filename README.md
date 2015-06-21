@@ -5,34 +5,12 @@ The updated version includes enhancements such as: the promotion of consistency 
 
 pycvss3 is Python library calculator for the newest CVSS v3 and can be invoked from scripts as API or directly from command line.  
 
-Basic usage
-==============
-<pre><code> 
-
-./cvss_3.calc.py --vector AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H/RL:U/RC:C/CR:H/IR:H/AR:H/MAV:N/MAC:L/MPR:H/MUI:N/MS:U/MC:L/MI:H/MA:L 
-
-CVSS v3 vector: AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H/RL:U/RC:C/CR:H/IR:H/AR:H/MAV:N/MAC:L/MPR:H/MUI:N/MS:U/MC:L/MI:H/MA:L
-        --> CVSS 3 Base Score: 10.0
-        --> CVSS 3 Temporal Score: 10.0
-        --> CVSS 3 Environmental Score: 7.2
-
-</code></pre>
-
-Calling the API
+How to ?
 ==============
 
-Edit the `api_call.py` to see how to leverage the class from your scripts.
+Run `cvss_3.calc.py` it's self-explanatory. The only input is the CVSS v3 vectors.
 
-To do
-==============
-
-* Clean and dptimize the pycvss3 code
-
-v0.2
----------
-* Added support to Environmental Score. 
-* Fixed few calculation bugs in pycvss.py class
-* Fixed the non_defined valued in  metrics.py class
+Or edit the `api_call.py` to see how to leverage the class from your scripts.
 
 v0.1
 ---------
