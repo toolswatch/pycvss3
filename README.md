@@ -26,7 +26,7 @@ Edit the `api_call.py` to see how to leverage the class from your scripts.
 To do
 ==============
 
-* Clean and dptimize the pycvss3 code
+* Clean and optimize the pycvss3 code
 
 v0.2
 ---------
