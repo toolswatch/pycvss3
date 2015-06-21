@@ -323,8 +323,6 @@ class Vector(object):
                 if self.ma_metric != "set":
                     self.availability_value_modified = Metrics.cia_impact.not_defined
 
-
-                    # AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N/E:H/RL:O/RC:C/CR:H/IR:H/AR:H/MAV:N/MAC:L/MPR:L/MUI:N/MS:C/MC:H/MI:H/MA:H
         return
 
     def cvss_base_score(self):
