@@ -101,7 +101,7 @@ def cvss_temporal_formula(cvss_base_value, exploit_code_maturity_value, remediat
     return cvss_temporal_value
 
 
-def cvss_environmental_score(impact_sub_score_value_modified, exploitability_sub_score_value_modified,
+def cvss_environmental_formula(impact_sub_score_value_modified, exploitability_sub_score_value_modified,
                              exploit_code_maturity_value, remediation_level_value, report_confidence_value,
                              scope_value_modified):
     """
@@ -119,7 +119,8 @@ def cvss_environmental_score(impact_sub_score_value_modified, exploitability_sub
         temp_score2 = math.ceil(temp_score * 10) / 10
         temp_score3 = temp_score2 * exploit_code_maturity_value * remediation_level_value * report_confidence_value
 
-    elif scope_value_modified == "changed":
+    else:
+        scope_value_modified == "changed"
         impact_value_modified = 7.52 * (impact_sub_score_value_modified - 0.029) - 3.25 * math.pow(
             impact_sub_score_value_modified - 0.02, 15)
         temp_score = min(10, 1.08 * (impact_value_modified + exploitability_sub_score_value_modified))
@@ -128,6 +129,7 @@ def cvss_environmental_score(impact_sub_score_value_modified, exploitability_sub
 
     if impact_sub_score_value_modified <= 0:
         cvss_environmental_value = float(0.0)
+        return cvss_environmental_value
     else:
         cvss_environmental_value = math.ceil(temp_score3 * 10) / 10
         return cvss_environmental_value

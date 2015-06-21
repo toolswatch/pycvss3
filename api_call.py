@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # Copyright (C) 2015 ToolsWatch.org
 # This file is part of vFeed Aggregated Vulnerability Database Community
-__version__ = 0.1
-__author__ = "NJ OUCHN @toolswatch"
 
 from lib.pycvss3 import Vector
 
@@ -39,9 +37,22 @@ cvss3_vector = "AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H/RL:U/RC:C/CR:H/IR:H/AR:H
 cvss3 = Vector(cvss3_vector)
 cvss_base_value = cvss3.cvss_base_score()
 cvss_temporal_value = cvss3.cvss_temporal_score()
+cvss_environmental_value = cvss3.cvss_environmental_score()
 
 print ""
 print "CVSS v3 vector:", cvss3_vector
 print "\tCVSS v3 Base Score:", cvss_base_value
 print "\tCVSS v3 Temporal Score:", cvss_temporal_value
+print "\tCVSS 3 Environmental Score:", cvss_environmental_value
 
+cvss3_vector = "AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H/E:H/RL:U/RC:C/CR:H/IR:H/AR:H/MAV:N/MAC:L/MPR:H/MUI:N/MS:U/MC:L/MI:H/MA:L"
+cvss3 = Vector(cvss3_vector)
+cvss_base_value = cvss3.cvss_base_score()
+cvss_temporal_value = cvss3.cvss_temporal_score()
+cvss_environmental_value = cvss3.cvss_environmental_score()
+
+print ""
+print "CVSS v3 vector:", cvss3_vector
+print "\tCVSS v3 Base Score:", cvss_base_value
+print "\tCVSS v3 Temporal Score:", cvss_temporal_value
+print "\tCVSS 3 Environmental Score:", cvss_environmental_value

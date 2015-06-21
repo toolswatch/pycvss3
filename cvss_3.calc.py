@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # Copyright (C) 2015 ToolsWatch.org
 # This file is part of vFeed Aggregated Vulnerability Database Community
-__version__ = 0.1
+__version__ = 0.2
 __author__ = "NJ OUCHN @toolswatch"
 
 import argparse
@@ -18,7 +18,11 @@ if __name__ == "__main__":
         vector = Vector(args.vector)
         cvss_base_value = vector.cvss_base_score()
         cvss_temporal_value = vector.cvss_temporal_score()
+        cvss_environmental_value = vector.cvss_environmental_score()
 
-        print "\tCVSS v3 Base Score:", cvss_base_value
-        print "\tCVSS v3 Temporal Score:", cvss_temporal_value
+        print " "
+        print "CVSS v3 vector:", args.vector
+        print "\t--> CVSS 3 Base Score:", cvss_base_value
+        print "\t--> CVSS 3 Temporal Score:", cvss_temporal_value
+        print "\t--> CVSS 3 Environmental Score:", cvss_environmental_value
 
