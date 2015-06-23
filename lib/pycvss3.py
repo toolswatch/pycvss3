@@ -6,7 +6,7 @@ from metrics import Metrics
 from formulas import *
 
 
-class Vector(object):
+class CVSS3(object):
     def __init__(self, vector):
         self.vectors = vector.split('/')
 
@@ -327,7 +327,7 @@ class Vector(object):
 
     def cvss_base_score(self):
         """ call the CVSS v3 Base (in order exploitability then impact then base).
-        :return: the CVSS v3 Base score value
+        :return: the CVSS v3 Base score value with its risk level
         """
         self.get_vectors()
         self.exploitability_sub_score_value = exploitability_sub_score(self.attack_vector_value,
@@ -340,21 +340,29 @@ class Vector(object):
 
         self.cvss_base_score_value = cvss_base_formula(self.impact_sub_score_value, self.scope_value,
                                                        self.exploitability_sub_score_value)
-        return self.cvss_base_score_value
+
+        self.cvss_base_risk_level = self.risk_score(self.cvss_base_score_value)
+
+        return (self.cvss_base_score_value, self.cvss_base_risk_level)
 
     def cvss_temporal_score(self):
         """ call the CVSS v3 Temporal formula. The CVSS base score is required but already calculated.
-        :return: the CVSS v3 Temporal score value
+        :return: the CVSS v3 Temporal score value with its risk level
         """
 
         self.cvss_temporal_score_value = cvss_temporal_formula(self.cvss_base_score_value,
                                                                self.exploit_code_maturity_value,
                                                                self.remediation_level_value,
                                                                self.report_confidence_value)
-        return self.cvss_temporal_score_value
+
+        self.cvss_temporal_risk_level = self.risk_score(self.cvss_temporal_score_value)
+
+        return (self.cvss_temporal_score_value, self.cvss_temporal_risk_level)
 
     def cvss_environmental_score(self):
-
+        """ call the CVSS v3 Environmental formula (in order exp. sub score, impact sub score)
+        :return: the CVSS v3 Environmental score value with its risk level
+        """
         self.exploitability_sub_score_value_modified = exploitability_sub_score_modified(
             self.attack_vector_value_modified,
             self.attack_complexity_value_modified,
@@ -375,4 +383,23 @@ class Vector(object):
                                                                    self.report_confidence_value,
                                                                    self.scope_value_modified)
 
-        return self.cvss_environmental_value
+        self.cvss_environmental_risk_level = self.risk_score(self.cvss_environmental_value)
+
+        return (self.cvss_environmental_value, self.cvss_environmental_risk_level)
+
+    def risk_score(self, score):
+        """
+        :param score: risk values
+        :return:  the qualitative risk rating values from none to critical
+        """
+        if score == float(0):
+            self.risk_level = "None"
+        elif score >= float(0.1) and score <= float(3.9):
+            self.risk_level = "Low"
+        elif score >= float(4.0) and score <= float(6.9):
+            self.risk_level = "Medium"
+        elif score >= float(7.0) and score <= float(8.9):
+            self.risk_level = "High"
+        elif score >= float(9.0) and score <= float(10.0):
+            self.risk_level = "Critical"
+        return self.risk_level
