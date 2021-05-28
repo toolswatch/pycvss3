@@ -64,7 +64,7 @@ class CVSS3(object):
             if self.metric_vector == "S":
                 self.scope_value = self.metric_value
                 # getting the value of PR vector from the original splitted vectors
-                self.splitted_2 = self.vectors[2:3][0].split(':')
+                self.splitted_2 = self.vectors[3:4][0].split(':')
                 self.metric_vector = self.splitted_2[0]
                 self.metric_value = self.splitted_2[1]
 
